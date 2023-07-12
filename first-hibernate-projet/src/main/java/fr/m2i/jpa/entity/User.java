@@ -1,10 +1,13 @@
 package main.java.fr.m2i.jpa.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,9 +29,18 @@ public class User {
 	@OneToOne( mappedBy = "user")
 	private UserDetails userDetails;
 	
+	@OneToMany(mappedBy = "user")
+	private List<CreditCard> creditCards;
+
+	public List<CreditCard> getCreditCards() {
+		return creditCards;
+	}
 	
+	public void setCreditCards(List<CreditCard> creditCards) {
+		this.creditCards = creditCards;
+	}
 	
-	
+
 	public UserDetails getUserDetails() {
 		return userDetails;
 	}

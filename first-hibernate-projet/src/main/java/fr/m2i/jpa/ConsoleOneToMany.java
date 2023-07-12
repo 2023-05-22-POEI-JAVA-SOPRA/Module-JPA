@@ -8,7 +8,7 @@ import main.java.fr.m2i.jpa.entity.CreditCard;
 import main.java.fr.m2i.jpa.entity.User;
 import main.java.fr.m2i.jpa.entity.UserDetails;
 
-public class ConsoleManyToOne {
+public class ConsoleOneToMany {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = null;
@@ -18,16 +18,13 @@ public class ConsoleManyToOne {
 			emf = Persistence.createEntityManagerFactory("maConfiguration");
 			em = emf.createEntityManager();
 			
-			CreditCard cc = em.find(CreditCard.class, 1);
-			System.out.println(cc);
-			System.out.println(cc.getUser());
+			User u = em.find(User.class, 1);
 			
-			System.out.println("========================");
+			System.out.println(u);
 			
-			CreditCard cc2 = em.find(CreditCard.class, 2);
-			System.out.println(cc2);
-			System.out.println( cc2.getUser());
-			
+			for (CreditCard cc : u.getCreditCards()) {
+				System.out.println(cc);
+			}
 			
 			
 		} finally {

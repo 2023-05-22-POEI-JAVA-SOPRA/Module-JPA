@@ -6,15 +6,18 @@
              
     <persistence-unit transaction-type="RESOURCE_LOCAL" name="maConfiguration">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        
-        <class>main.java.fr.m2i.jpa.entity.User</class> 
-        <class>main.java.fr.m2i.jpa.entity.UserDetails</class> 
-        <class>main.java.fr.m2i.jpa.entity.Product</class> 
-        <class>main.java.fr.m2i.jpa.entity.ProductDetails</class> 
-
+	    
+	    <class>main.java.fr.m2i.jpa.entity.Order</class>
+	    <class>main.java.fr.m2i.jpa.entity.CreditCard</class>
+	    <class>main.java.fr.m2i.jpa.entity.Product</class>
+	    <class>main.java.fr.m2i.jpa.entity.ProductDetails</class>
+	    <class>main.java.fr.m2i.jpa.entity.User</class>
+	    <class>main.java.fr.m2i.jpa.entity.UserDetails</class>
 
         
         <properties>
+        
+        
               <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 		      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpahibernate?useSSL=false&amp;serverTimezone=UTC"/>
 		      <property name="javax.persistence.jdbc.user" value="root"/>

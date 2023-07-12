@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import main.java.fr.m2i.jpa.entity.CreditCard;
-import main.java.fr.m2i.jpa.entity.User;
-import main.java.fr.m2i.jpa.entity.UserDetails;
+import main.java.fr.m2i.jpa.entity.Order;
 
-public class ConsoleManyToOne {
+
+
+public class ProductManyToOne {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = null;
@@ -18,15 +18,17 @@ public class ConsoleManyToOne {
 			emf = Persistence.createEntityManagerFactory("maConfiguration");
 			em = emf.createEntityManager();
 			
-			CreditCard cc = em.find(CreditCard.class, 1);
-			System.out.println(cc);
-			System.out.println(cc.getUser());
+			Order o = em.find(Order.class, 1);
+			System.out.println(o);
+			System.out.println(o.getProduct());
 			
-			System.out.println("========================");
+			System.out.println("-----------------------------");
 			
-			CreditCard cc2 = em.find(CreditCard.class, 2);
-			System.out.println(cc2);
-			System.out.println( cc2.getUser());
+			Order o2 = em.find(Order.class, 2);
+			System.out.println(o2);
+			System.out.println(o2.getProduct());
+			
+			
 			
 			
 			
@@ -37,7 +39,11 @@ public class ConsoleManyToOne {
 			if (em != null)
 				em.close();
 		}
+		
+		
+		
+		
 	}
-		
-		
+	
+	
 }
