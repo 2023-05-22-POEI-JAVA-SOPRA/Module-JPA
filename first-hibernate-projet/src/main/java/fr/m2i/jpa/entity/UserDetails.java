@@ -29,6 +29,7 @@ public class UserDetails {
 	@OneToOne
 	@JoinColumn( name = "user_id")
 	private User user;
+	
 
 	public int getId_user_informations() {
 		return idUserInformations;

@@ -8,7 +8,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
         <class>main.java.fr.m2i.jpa.entity.User</class> 
+        <class>main.java.fr.m2i.jpa.entity.UserDetails</class> 
         <class>main.java.fr.m2i.jpa.entity.Product</class> 
+        <class>main.java.fr.m2i.jpa.entity.ProductDetails</class> 
 
 
         

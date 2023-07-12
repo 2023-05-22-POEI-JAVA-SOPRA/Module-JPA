@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity @Table//(name = "Product")
@@ -20,6 +21,18 @@ public class Product {
 	
 	private int quantity;
 
+	@OneToOne( mappedBy = "product") // Précise que la relation se fait dans l'autre table, et que l'on peut récupérer le champ par attribut inverse 
+	// (MappedBy représente le nom de l'attribut dans le model inverse)
+	private ProductDetails productDetails;
+	
+	public ProductDetails getProductDetails() {
+		return productDetails;
+	}
+	
+	public void setProductDetails(ProductDetails productDetails) {
+		this.productDetails = productDetails;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -76,8 +89,10 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", quantity=" + quantity + "]";
+				+ ", quantity=" + quantity + ", productDetails=" + productDetails + "]";
 	}
+
+
 	
 	
 	
