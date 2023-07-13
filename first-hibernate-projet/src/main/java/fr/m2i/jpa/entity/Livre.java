@@ -1,9 +1,13 @@
 package main.java.fr.m2i.jpa.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity @Table//(name="Livre")
+@Entity
+//TABLE PER CLASS @Table//(name="Livre")
+// SINGLE TABLE
+@DiscriminatorValue("1")
 public class Livre extends Document{
 
 	private String editor;

@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import main.java.fr.m2i.jpa.entity.Document;
-import main.java.fr.m2i.jpa.entity.These;
+import main.java.fr.m2i.jpa.entity.Livre;
 
 public class ConsoleInheritence {
 
@@ -33,7 +33,7 @@ public class ConsoleInheritence {
 			
 			System.out.println("=============");
 			
-			These t = em.find(These.class, 2);
+			Livre t = em.find(Livre.class, 2);
 			System.out.println(t);
 			
 			

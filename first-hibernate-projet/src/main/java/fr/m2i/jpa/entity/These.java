@@ -1,9 +1,13 @@
 package main.java.fr.m2i.jpa.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity @Table//(name="These")
+@Entity
+//TABLE PER CLASS @Table//(name="These")
+// SIGNE TABLE
+@DiscriminatorValue("2")
 public class These extends Document{
 
 	private String discipline;
