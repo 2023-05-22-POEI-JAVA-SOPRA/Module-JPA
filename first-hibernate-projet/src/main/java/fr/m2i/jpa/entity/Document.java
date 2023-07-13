@@ -8,10 +8,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // TABLE_PER_CLASS : Une table par class enfant de notre Document
 public abstract class Document {
 
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE) // Signifie que l'ID n'est plus gérer par la base de donnée
 	private int id;
 	
 	private String title;
