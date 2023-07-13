@@ -1,15 +1,13 @@
 package main.java.fr.m2i.jpa;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import main.java.fr.m2i.jpa.entity.Role;
-import main.java.fr.m2i.jpa.entity.User;
+import main.java.fr.m2i.jpa.entity.Product;
+import main.java.fr.m2i.jpa.entity.Shop;
 
-public class ConsoleManyToMany {
+public class ProductManyToMany {
 
 	
 	public static void main(String[] args) {
@@ -19,19 +17,17 @@ public class ConsoleManyToMany {
 		try {
 			emf = Persistence.createEntityManagerFactory("maConfiguration");
 			em = emf.createEntityManager();
-			
-//			User u = em.find(User.class, 2);
-//			
-//			System.out.println(u);
-//			
-//			System.out.println(u.getRoles());
 
-			Role r = em.find(Role.class, 1);
+//			Product p = em.find(Product.class, 1);
+//			
+//			System.out.println(p);
+//			System.out.println(p.getShops());
+//			
 			
-			System.out.println(r);
-			System.out.println(r.getUsers());
+			Shop s = em.find(Shop.class, 1);
 			
-			
+			System.out.println(s);
+			System.out.println(s.getProducts());
 			
 		} finally {
 			if (emf != null)

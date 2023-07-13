@@ -1,9 +1,14 @@
 package main.java.fr.m2i.jpa.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,6 +29,27 @@ public class Product {
 	@OneToOne( mappedBy = "product") // Précise que la relation se fait dans l'autre table, et que l'on peut récupérer le champ par attribut inverse 
 	// (MappedBy représente le nom de l'attribut dans le model inverse)
 	private ProductDetails productDetails;
+	
+	@ManyToMany
+	@JoinTable(
+		name = "product_shop_association",
+		joinColumns = @JoinColumn(name ="product_id"),
+		inverseJoinColumns = @JoinColumn(name = "shop_id")
+	)
+	List<Shop> shops;
+	
+	
+	
+	public List<Shop> getShops() {
+		return shops;
+	}
+	
+	public void setShops(List<Shop> shops) {
+		this.shops = shops;
+	}
+	
+	
+	
 	
 	public ProductDetails getProductDetails() {
 		return productDetails;
