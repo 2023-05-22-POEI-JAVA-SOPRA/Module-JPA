@@ -2,44 +2,66 @@ package main.java.fr.m2i.jpa.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity @Table(name = "user")
+@Entity
+@Table(name = "user")
 public class User {
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column( name = "first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column( name = "last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	//@Column( name = "age")
+
+	// @Column( name = "age")
 	private int age;
 
-	@OneToOne( mappedBy = "user")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL )
 	private UserDetails userDetails;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<CreditCard> creditCards;
 
+	
+	@ManyToMany
+	@JoinTable(
+		name = "role_user_association", 
+		joinColumns = @JoinColumn(name = "user_id"), 
+		inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private List<Role> roles;
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+	
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
 	public List<CreditCard> getCreditCards() {
 		return creditCards;
 	}
-	
+
 	public void setCreditCards(List<CreditCard> creditCards) {
 		this.creditCards = creditCards;
 	}
-	
 
 	public UserDetails getUserDetails() {
 		return userDetails;
@@ -98,7 +120,5 @@ public class User {
 		this.lastName = lastName;
 		this.age = age;
 	}
-	
-	
-	
+
 }
